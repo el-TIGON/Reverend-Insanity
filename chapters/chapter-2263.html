@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1132</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #212529;
+            --link-color: #0056b3;
+            --border-color: #dee2e6;
+            --nav-bg-color: #f8f9fa;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+        }
+        .theme-light {
+    --bg-color: #ffffff;
+    --text-color: #212529;
+    --link-color: #0056b3;
+    --border-color: #dee2e6;
+    --nav-bg-color: #f8f9fa;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+}
+.theme-dark {
+    --bg-color: #1c1c1e;
+    --text-color: #d1d1d1;
+    --link-color: #a0a0a0;
+    --border-color: #3a3a3c;
+    --nav-bg-color: #2c2c2e;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+.theme-sepia {
+    --bg-color: #f4ecd8;
+    --text-color: #5c4b37;
+    --link-color: #8d6e63;
+    --border-color: #d6c3ae;
+    --nav-bg-color: #e7d9c5;
+    --shadow-color: rgba(0, 0, 0, 0.07);
+}
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-size: 1.1em;
+            line-height: 1.8;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h1 {
+            text-align: center; margin-bottom: 2em; font-weight: 700; font-size: 2em;
+        }
+        p {
+            text-align: left; text-indent: 0; margin-bottom: 1.2em;
+        }
+        a {
+            text-decoration: none; color: var(--link-color); transition: color 0.2s;
+        }
+        a:hover { color: var(--text-color); }
+        .nav {
+            margin-top: 40px; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-top: 1px solid var(--border-color);
+        }
+        .controls {
+            position: fixed; top: 15px; right: 15px; background-color: var(--nav-bg-color); padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; z-index: 1000; box-shadow: 0 4px 15px var(--shadow-color);
+        }
+        .controls label { margin-right: 10px; color: var(--text-color); }
+        .controls select {
+            padding: 5px; border-radius: 5px; background-color: var(--bg-color); color: var(--text-color); border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body class="theme-dark">
+    <div class="controls">
+        <label for="theme-select">Theme:</label>
+        <select id="theme-select">
+            <option value="light">Light</option>
+            <option value="dark" selected>Dark</option>
+            <option value="sepia">Sepia</option>
+        </select>
+    </div>
+    <h1>Chapter 1132</h1>
+    <p>- Taking Over Hei</p>
+<p>Fan Grotto-Heaven</p>
+    <div class="nav">
+        <a href="chapter-2262.html">&larr; Previous</a>
+        <a href="../index.html">Chapter Index</a>
+        <a href="chapter-2264.html">Next &rarr;</a>
+    </div>
+    <script>
+        const themeSelect = document.getElementById('theme-select');
+        const body = document.body;
+        const THEME_KEY = 'e-book-theme-v2';
+        function applyTheme(themeName) {
+            body.className = `theme-${themeName}`;
+            localStorage.setItem(THEME_KEY, themeName);
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'dark';
+            themeSelect.value = savedTheme;
+            applyTheme(savedTheme);
+        });
+        themeSelect.addEventListener('change', (e) => applyTheme(e.target.value));
+    </script>
+</body>
+</html>
