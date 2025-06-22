@@ -15,6 +15,7 @@
             --border-color: #dee2e6;
             --nav-bg-color: #f8f9fa;
             --shadow-color: rgba(0, 0, 0, 0.05);
+            --font-size: 20px; /* Default font size */
         }
         .theme-light {
     --bg-color: #ffffff;
@@ -43,7 +44,7 @@
 
         body {
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            font-size: 1.1em;
+            font-size: var(--font-size); /* Use CSS variable for font size */
             line-height: 1.8;
             padding: 40px 20px;
             max-width: 800px;
@@ -53,7 +54,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
         h1 {
-            text-align: center; margin-bottom: 2em; font-weight: 700; font-size: 2em;
+            text-align: center; margin-bottom: 2em; font-weight: 700;
         }
         p {
             text-align: left; text-indent: 0; margin-bottom: 1.2em;
@@ -67,8 +68,15 @@
         }
         .controls {
             position: fixed; top: 15px; right: 15px; background-color: var(--nav-bg-color); padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; z-index: 1000; box-shadow: 0 4px 15px var(--shadow-color);
+            display: flex;
+            align-items: center;
         }
-        .controls label { margin-right: 10px; color: var(--text-color); }
+        .control-group {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+        .controls label { margin-right: 8px; color: var(--text-color); font-size: 14px; }
         .controls select {
             padding: 5px; border-radius: 5px; background-color: var(--bg-color); color: var(--text-color); border: 1px solid var(--border-color);
         }
@@ -76,16 +84,29 @@
 </head>
 <body class="theme-dark">
     <div class="controls">
-        <label for="theme-select">Theme:</label>
-        <select id="theme-select">
-            <option value="light">Light</option>
-            <option value="dark" selected>Dark</option>
-            <option value="sepia">Sepia</option>
-        </select>
+        <div class="control-group">
+            <label for="theme-select">Theme:</label>
+            <select id="theme-select">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="sepia">Sepia</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="font-size-select">Size:</label>
+            <select id="font-size-select">
+                <option value="18px">18</option>
+                <option value="20px">20</option>
+                <option value="22px">22</option>
+                <option value="24px">24</option>
+            </select>
+        </div>
     </div>
     <h1>Chapter 705</h1>
-    <p>- Immortal Slaughtering Plan, Fang Yuan</p>
+    <div id="content-container">
+        <p>- Immortal Slaughtering Plan, Fang Yuan</p>
 <p>distributes benefits</p>
+    </div>
     <div class="nav">
         <a href="chapter-1408.html">&larr; Previous</a>
         <a href="../index.html">Chapter Index</a>
@@ -93,18 +114,34 @@
     </div>
     <script>
         const themeSelect = document.getElementById('theme-select');
+        const fontSizeSelect = document.getElementById('font-size-select');
         const body = document.body;
-        const THEME_KEY = 'e-book-theme-v2';
+        
+        const THEME_KEY = 'e-book-theme-v3';
+        const FONT_SIZE_KEY = 'e-book-font-size-v3';
+
         function applyTheme(themeName) {
             body.className = `theme-${themeName}`;
             localStorage.setItem(THEME_KEY, themeName);
         }
+
+        function applyFontSize(size) {
+            document.documentElement.style.setProperty('--font-size', size);
+            localStorage.setItem(FONT_SIZE_KEY, size);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem(THEME_KEY) || 'dark';
             themeSelect.value = savedTheme;
             applyTheme(savedTheme);
+
+            const savedFontSize = localStorage.getItem(FONT_SIZE_KEY) || '20px';
+            fontSizeSelect.value = savedFontSize;
+            applyFontSize(savedFontSize);
         });
+
         themeSelect.addEventListener('change', (e) => applyTheme(e.target.value));
+        fontSizeSelect.addEventListener('change', (e) => applyFontSize(e.target.value));
     </script>
 </body>
 </html>
